@@ -3,7 +3,9 @@ namespace App\Http\Controllers;
 
  use Illuminate\Http\Request;
  use App\Mail\ContactMail; 
+ use App\Models\Contact;
  use Illuminate\Support\Facades\Mail;
+ use Illuminate\Validation\Validator;
  
 
 // use mail;
@@ -42,8 +44,16 @@ namespace App\Http\Controllers;
          return view("appointment");
      }
      //email sending function
-     public function contact_mail_send(request $request) 
-      {
+     public function contact_mail_send(Request $request) {
+
+        $data = $request->validate([
+            'name'=>'required|string|max:50',
+            'email'=>'required|string',
+            'subject'=>'required',
+            'message'=>'required',
+
+        ]);
+        Contact::create($data);
         Mail::to('manalali874@yahoo.com')->send(new ContactMail($request));
         return redirect('contact');
         // dd($request->all());

@@ -35,6 +35,32 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
-        });
+
+            Route::middleware('web')
+               ->group(base_path('routes/adminWeb.php'));
+
+               Route::middleware('web')
+               ->group(base_path('routes/adminRoutes.php'));
+
+
+         });
     }
+
+    protected $namespace = 'App\Http\Controllers';
+
+// ...
+
+/**
+ * Define the "admin web" routes for the application.
+ *
+ * These routes all receive session state, CSRF protection, etc.
+ *
+ * @return void
+*====================*/
+            // protected function mapAdminWebRoutes()
+            // {
+            //     Route::middleware('web')
+            //         ->namespace($this->namespace)
+            //         ->group(base_path('routes/adminWeb.php'));
+            // }
 }

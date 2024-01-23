@@ -31,11 +31,10 @@ Route::get("become_a_teacher",[KiderController::class ,"become_a_teacher"])->nam
 Route::get("appointment",[KiderController::class ,"appointment"])->name("appointment");
 
 
-
 Route::post("contact_mail",[KiderController::class ,"contact_mail_send"]);
 
 
-
+// Route::get("admin",[AdminController::class ,"index"]);
 
 
 
